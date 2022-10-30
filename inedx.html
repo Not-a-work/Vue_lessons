@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+
+<body>
+<div class="conteinter" id="app">
+    <div class="column is-three-fifths">
+
+        <h1 class="title">List of notes</h1>
+
+        <input class="input is-primary" type="text" placeholder="Input" 
+            :value="inputValue" 
+            @input="inputHandler" 
+            @keypress.enter="addNote">
+
+        <button class="button is-primary is-normal mt-4" @click="addNote">Click</button>
+        <br>
+        <hr />
+    </div>
+
+    <div class="column is-three-fifths" v-if="notes.length !==0">
+
+        <h1 class="title">Notes</h1>
+        
+        <ul class="list">
+            <li class="list-item pb-2" v-for="(note, i) in notes">
+                {{i+1}} - {{note}}
+                <button class="delete" @click="removeNote(i)"></button>
+            </li>
+        </ul>
+
+    </div>
+</div>
+    
+
+    
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
